@@ -31,4 +31,9 @@ class AuthService {
       options: Options(contentType: Headers.formUrlEncodedContentType),
     );
   }
+
+  getInfo(token) async {
+    dio.options.headers['Authorization'] = 'Bearer $token';
+    return await dio.get('https://flutterauth-kesh.herokuapp.com/getinfo');
+  }
 }

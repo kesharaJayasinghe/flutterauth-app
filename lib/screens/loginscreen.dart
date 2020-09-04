@@ -74,6 +74,26 @@ class _LoginScreenState extends State<LoginScreen> {
                 );
               },
             ),
+            SizedBox(height: 10.0),
+            RaisedButton(
+              child: Text('Get Info'),
+              color: Colors.amber,
+              onPressed: () {
+                AuthService().getInfo(token).then(
+                  (val) {
+                    Fluttertoast.showToast(
+                      msg: val.data['msg'],
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.BOTTOM,
+                      timeInSecForIosWeb: 1,
+                      backgroundColor: Colors.amberAccent,
+                      textColor: Colors.black,
+                      fontSize: 16.0,
+                    );
+                  },
+                );
+              },
+            ),
           ],
         ),
       ),
