@@ -8,9 +8,10 @@ class AuthService {
   login(name, password) async {
     try {
       return await dio.post(
-          'https://flutterauth-kesh.herokuapp.com/authenticate',
-          data: {'name': name, 'password': password},
-          options: Options(contentType: Headers.formUrlEncodedContentType));
+        'https://flutterauth-kesh.herokuapp.com/authenticate',
+        data: {'name': name, 'password': password},
+        options: Options(contentType: Headers.formUrlEncodedContentType),
+      );
     } on DioError catch (e) {
       Fluttertoast.showToast(
         msg: e.response.data['msg'],
@@ -21,5 +22,13 @@ class AuthService {
         fontSize: 16.0,
       );
     }
+  }
+
+  addUser(name, password) async {
+    return await dio.post(
+      'https://flutterauth-kesh.herokuapp.com/adduser',
+      data: {'name': name, 'password': password},
+      options: Options(contentType: Headers.formUrlEncodedContentType),
+    );
   }
 }

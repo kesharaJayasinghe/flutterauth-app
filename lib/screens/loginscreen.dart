@@ -13,33 +13,56 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          TextField(
-            decoration: InputDecoration(labelText: 'Name'),
-            onChanged: (val) {
-              name = val;
-            },
-          ),
-          TextField(
-            obscureText: true,
-            decoration: InputDecoration(labelText: 'Password'),
-            onChanged: (val) {
-              password = val;
-            },
-          ),
-          SizedBox(height: 10.0),
-          RaisedButton(
-            child: Text('Authenticate'),
-            color: Colors.blue,
-            onPressed: () {
-              AuthService().login(name, password).then(
-                (val) {
-                  if (val.data['success']) {
-                    token = val.data['token'];
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            TextField(
+              decoration: InputDecoration(labelText: 'Name'),
+              onChanged: (val) {
+                name = val;
+              },
+            ),
+            TextField(
+              obscureText: true,
+              decoration: InputDecoration(labelText: 'Password'),
+              onChanged: (val) {
+                password = val;
+              },
+            ),
+            SizedBox(height: 10.0),
+            RaisedButton(
+              child: Text('Authenticate'),
+              color: Colors.blue,
+              onPressed: () {
+                AuthService().login(name, password).then(
+                  (val) {
+                    if (val.data['success']) {
+                      token = val.data['token'];
+                      Fluttertoast.showToast(
+                        msg: "Authenticated",
+                        toastLength: Toast.LENGTH_SHORT,
+                        gravity: ToastGravity.BOTTOM,
+                        timeInSecForIosWeb: 1,
+                        backgroundColor: Colors.lightGreen,
+                        textColor: Colors.black,
+                        fontSize: 16.0,
+                      );
+                    }
+                  },
+                );
+              },
+            ),
+            SizedBox(height: 10.0),
+            RaisedButton(
+              child: Text('Add User'),
+              color: Colors.lightGreen,
+              onPressed: () {
+                AuthService().addUser(name, password).then(
+                  (val) {
                     Fluttertoast.showToast(
-                      msg: "Authenticated",
+                      msg: val.data['msg'],
                       toastLength: Toast.LENGTH_SHORT,
                       gravity: ToastGravity.BOTTOM,
                       timeInSecForIosWeb: 1,
@@ -47,12 +70,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       textColor: Colors.black,
                       fontSize: 16.0,
                     );
-                  }
-                },
-              );
-            },
-          ),
-        ],
+                  },
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
