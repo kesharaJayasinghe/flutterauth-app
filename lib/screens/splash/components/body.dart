@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutterauthapp/constants.dart';
 import 'package:flutterauthapp/size_config.dart';
-// import 'package:flutterauthapp/constants.dart';
+
 import '../components/splash_content.dart';
-// import 'package:flutterauthapp/size_config.dart';
+import '../../../components/default_button.dart';
 
 class Body extends StatefulWidget {
   @override
@@ -64,24 +64,10 @@ class _BodyState extends State<Body> {
                         (index) => buildDot(index: index),
                       ),
                     ),
-                    Spacer(),
-                    SizedBox(
-                      width: double.infinity,
-                      height: getProportionateScreenHeight(56),
-                      child: FlatButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        color: kPrimaryColor,
-                        onPressed: () {},
-                        child: Text(
-                          "Continue",
-                          style: TextStyle(
-                            fontSize: getProportionateScreenWidth(18),
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
+                    Spacer(flex: 3),
+                    DefaultButton(
+                      text: "Continue",
+                      press: () {},
                     ),
                     Spacer(),
                   ],

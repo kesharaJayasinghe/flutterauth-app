@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterauthapp/constants.dart';
 // import 'package:flutterauthapp/screens/loginscreen.dart';
 import 'package:flutterauthapp/screens/splash/splashscreen.dart';
+import 'package:flutterauthapp/routes.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,7 +24,9 @@ class MyApp extends StatelessWidget {
         ),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: SplashScreen(),
+      initialRoute: SplashScreen.routeName,
+      routes: routes,
+      // home: SplashScreen(),
       // home: LoginScreen(),
     );
   }
