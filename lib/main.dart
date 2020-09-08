@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutterauthapp/constants.dart';
-// import 'package:flutterauthapp/screens/loginscreen.dart';
 import 'package:flutterauthapp/screens/splash/splashscreen.dart';
 import 'package:flutterauthapp/routes.dart';
+import 'package:flutterauthapp/theme.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,15 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Auth Demo',
-      theme: ThemeData(
-        scaffoldBackgroundColor: Colors.white,
-        fontFamily: "Muli",
-        textTheme: TextTheme(
-          bodyText1: TextStyle(color: kTextColor),
-          bodyText2: TextStyle(color: kTextColor),
-        ),
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+      theme: theme(),
       initialRoute: SplashScreen.routeName,
       routes: routes,
       // home: SplashScreen(),
