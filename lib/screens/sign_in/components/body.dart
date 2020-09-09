@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutterauthapp/components/signup_text.dart';
 import 'package:flutterauthapp/components/social_card.dart';
-import 'package:flutterauthapp/constants.dart';
 import 'package:flutterauthapp/screens/sign_in/components/signin_form.dart';
 import 'package:flutterauthapp/size_config.dart';
 
@@ -55,25 +55,7 @@ class Body extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: getProportionateScreenHeight(20)),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Don't have an account? ",
-                      style: TextStyle(
-                        fontSize: getProportionateScreenWidth(15),
-                      ),
-                    ),
-                    Text(
-                      "Sign Up",
-                      style: TextStyle(
-                        fontSize: getProportionateScreenWidth(15),
-                        color: kPrimaryColor,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                )
+                SignupText(),
               ],
             ),
           ),
