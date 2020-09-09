@@ -12,24 +12,28 @@ class Body extends StatelessWidget {
     return SizedBox(
       width: double.infinity,
       child: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(height: SizeConfig.screenHeight * 0.04),
-            Text(
-              "Forgot Password?",
-              style: TextStyle(
-                fontSize: getProportionateScreenWidth(28),
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+              horizontal: getProportionateScreenHeight(20)),
+          child: Column(
+            children: [
+              SizedBox(height: SizeConfig.screenHeight * 0.04),
+              Text(
+                "Forgot Password?",
+                style: TextStyle(
+                  fontSize: getProportionateScreenWidth(28),
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            Text(
-              "Please enter your email and we'll send \nyou a link to reset your password.",
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(height: SizeConfig.screenHeight * 0.1),
-            ForgotPwdForm(),
-          ],
+              Text(
+                "Please enter your email and we'll send \nyou a link to reset your password.",
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: SizeConfig.screenHeight * 0.1),
+              ForgotPwdForm(),
+            ],
+          ),
         ),
       ),
     );
@@ -42,11 +46,13 @@ class ForgotPwdForm extends StatefulWidget {
 }
 
 class _ForgotPwdFormState extends State<ForgotPwdForm> {
+  final _formKey = GlobalKey<FormState>();
   List<String> errors = [];
   String email;
   @override
   Widget build(BuildContext context) {
     return Form(
+      key: _formKey,
       child: Column(
         children: [
           TextFormField(
@@ -92,7 +98,9 @@ class _ForgotPwdFormState extends State<ForgotPwdForm> {
           SizedBox(height: SizeConfig.screenHeight * 0.1),
           DefaultButton(
             text: "Continue",
-            press: () {},
+            press: () {
+              if (_formKey.currentState.validate()) {}
+            },
           ),
           SizedBox(height: SizeConfig.screenHeight * 0.1),
           SignupText(),
