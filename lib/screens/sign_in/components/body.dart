@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:flutterauthapp/screens/sign_in/components/custom_sufix_icon.dart';
 import 'package:flutterauthapp/size_config.dart';
 
 class Body extends StatelessWidget {
@@ -48,14 +50,43 @@ class _SignFormState extends State<SignForm> {
     return Form(
       child: Column(
         children: [
-          TextFormField(
-            decoration: InputDecoration(
-              labelText: "Username",
-              hintText: "Enter your username",
-              // floatingLabelBehavior: FloatingLabelBehavior.always,
-            ),
+          buildUsernameFormField(),
+          SizedBox(
+            height: getProportionateScreenHeight(20),
+          ),
+          buildPasswordFormField(),
+          SizedBox(
+            height: getProportionateScreenHeight(20),
           ),
         ],
+      ),
+    );
+  }
+
+  TextFormField buildPasswordFormField() {
+    return TextFormField(
+      obscureText: true,
+      decoration: InputDecoration(
+        labelText: "Password",
+        hintText: "Enter your password",
+        // floatingLabelBehavior: FloatingLabelBehavior.always,
+        suffixIcon: CustomSufixIcon(
+          svgIcon: "assets/icons/lock.svg",
+        ),
+      ),
+    );
+  }
+
+  TextFormField buildUsernameFormField() {
+    return TextFormField(
+      keyboardType: TextInputType.text,
+      decoration: InputDecoration(
+        labelText: "Username",
+        hintText: "Enter your username",
+        // floatingLabelBehavior: FloatingLabelBehavior.always,
+        suffixIcon: CustomSufixIcon(
+          svgIcon: "assets/icons/person.svg",
+        ),
       ),
     );
   }
