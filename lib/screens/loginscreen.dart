@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutterauthapp/services/authenticate.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 

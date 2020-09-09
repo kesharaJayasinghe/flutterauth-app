@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutterauthapp/screens/splash/splashscreen.dart';
 import 'package:flutterauthapp/routes.dart';
 import 'package:flutterauthapp/theme.dart';
