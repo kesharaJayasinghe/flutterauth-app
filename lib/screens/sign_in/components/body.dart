@@ -49,6 +49,8 @@ class SignForm extends StatefulWidget {
 
 class _SignFormState extends State<SignForm> {
   final _formKey = GlobalKey<FormState>();
+  String username;
+  String password;
   final List<String> errors = [];
 
   @override
@@ -58,14 +60,11 @@ class _SignFormState extends State<SignForm> {
       child: Column(
         children: [
           buildUsernameFormField(),
-          SizedBox(
-            height: getProportionateScreenHeight(20),
-          ),
+          SizedBox(height: getProportionateScreenHeight(20)),
           buildPasswordFormField(),
-          SizedBox(
-            height: getProportionateScreenHeight(20),
-          ),
+          SizedBox(height: getProportionateScreenHeight(20)),
           FormError(errors: errors),
+          SizedBox(height: getProportionateScreenHeight(20)),
           DefaultButton(
             text: "Sign In",
             press: () {
@@ -82,6 +81,31 @@ class _SignFormState extends State<SignForm> {
   TextFormField buildPasswordFormField() {
     return TextFormField(
       obscureText: true,
+      onSaved: (newValue) => password = newValue,
+      onChanged: (value) {
+        if (value.isNotEmpty && errors.contains(kPwdNullError)) {
+          setState(() {
+            errors.remove(kPwdNullError);
+          });
+        } else if (value.length >= 8 && errors.contains(kShortPwdError)) {
+          setState(() {
+            errors.remove(kShortPwdError);
+          });
+        }
+        return null;
+      },
+      validator: (value) {
+        if (value.isEmpty && !errors.contains(kPwdNullError)) {
+          setState(() {
+            errors.add(kPwdNullError);
+          });
+        } else if (value.length < 8 && !errors.contains(kShortPwdError)) {
+          setState(() {
+            errors.add(kShortPwdError);
+          });
+        }
+        return null;
+      },
       decoration: InputDecoration(
         labelText: "Password",
         hintText: "Enter your password",
@@ -96,6 +120,7 @@ class _SignFormState extends State<SignForm> {
   TextFormField buildUsernameFormField() {
     return TextFormField(
       keyboardType: TextInputType.text,
+      onSaved: (newValue) => username = newValue,
       onChanged: (value) {
         if (value.isNotEmpty && errors.contains(kUsernameNullError)) {
           setState(() {
