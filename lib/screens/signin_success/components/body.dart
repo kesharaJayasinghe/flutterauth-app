@@ -8,7 +8,7 @@ class Body extends StatelessWidget {
     return Column(
       // mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        SizedBox(height: SizeConfig.screenHeight * 0.2),
+        SizedBox(height: SizeConfig.screenHeight * 0.1),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -27,13 +27,23 @@ class Body extends StatelessWidget {
             color: Colors.black,
           ),
         ),
+        Text(
+          "Welcome to Natural Bites!",
+          style: TextStyle(
+            fontSize: getProportionateScreenWidth(18),
+            fontWeight: FontWeight.bold,
+            fontStyle: FontStyle.italic,
+          ),
+        ),
+        Spacer(),
         SizedBox(
           width: SizeConfig.screenWidth * 0.6,
           child: DefaultButton(
             text: "Continue",
             press: () {},
           ),
-        )
+        ),
+        Spacer(),
       ],
     );
   }
