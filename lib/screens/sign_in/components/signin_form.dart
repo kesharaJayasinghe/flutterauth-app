@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutterauthapp/constants.dart';
 import 'package:flutterauthapp/screens/forgot_password/forgot_password_screen.dart';
+import 'package:flutterauthapp/screens/signin_success/signin_success_screen.dart.dart';
 import 'package:flutterauthapp/size_config.dart';
 import 'package:flutterauthapp/components/default_button.dart';
 import 'package:flutterauthapp/components/custom_sufix_icon.dart';
@@ -60,6 +61,7 @@ class _SignFormState extends State<SignForm> {
             press: () {
               if (_formKey.currentState.validate()) {
                 _formKey.currentState.save();
+                Navigator.pushNamed(context, SigninSuccessScreen.routeName);
               }
             },
           ),
