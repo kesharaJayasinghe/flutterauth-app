@@ -83,6 +83,7 @@ class _SignFormState extends State<SignForm> {
           setState(() {
             errors.remove(kShortPwdError);
           });
+          return "";
         }
         return null;
       },
@@ -95,6 +96,7 @@ class _SignFormState extends State<SignForm> {
           setState(() {
             errors.add(kShortPwdError);
           });
+          return "";
         }
         return null;
       },
@@ -131,11 +133,13 @@ class _SignFormState extends State<SignForm> {
           setState(() {
             errors.add(kUsernameNullError);
           });
+          return "";
         } else if (!usernameValidatorRegExp.hasMatch(value) &&
             !errors.contains(kInvalidUsernameError)) {
           setState(() {
             errors.add(kInvalidUsernameError);
           });
+          return "";
         }
         return null;
       },
